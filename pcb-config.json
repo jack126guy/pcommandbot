@@ -2,7 +2,7 @@
 	"server": "irc.example.org",
 	"port": 6667,
 	"nicks": ["PCommandBot", "PCommandBot_", "PCommandBot__"],
-	"username": "JackBot",
+	"username": "PCB",
 	"nickserv_password": "",
 	"channels": ["#example"],
 	"command_prefix": "!",
