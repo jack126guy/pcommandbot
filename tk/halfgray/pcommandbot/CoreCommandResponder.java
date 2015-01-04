@@ -25,7 +25,7 @@ public class CoreCommandResponder implements Responder {
 	/**
 	 * Message used to reply to the "about" subcommand
 	 */
-	public static final String ABOUT_STRING = "This bot is running PCommandBot, version 1.0.2."
+	public static final String ABOUT_STRING = "This bot is running PCommandBot, version 1.0.3."
 		+ " More information is at <http://github.com/jack126guy/pcommandbot>.";
 
 	/**

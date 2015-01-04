@@ -46,7 +46,7 @@ The `sources.txt` and `manifest.txt` files are provided in the source distributi
 
 ## Other Information
 
-The latest version is 1.0.2.
+The latest version is 1.0.3.
 
 PCommandBot is available under the GNU General Public License, version 3 or later. Different parts of the application are available under different terms; refer to `LICENSE.txt` for details.
 
