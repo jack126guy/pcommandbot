@@ -40,7 +40,7 @@ public class PCommandBot extends PircBot {
 	/**
 	 * Version string
 	 */
-	public static final String PCB_VERSION_STRING = "PCommandBot v1.0 http://github.com/jack126guy/pcommandbot";
+	public static final String PCB_VERSION_STRING = "PCommandBot v1.0.2 http://github.com/jack126guy/pcommandbot";
 
 	/**
 	 * Pattern that matches one or more characters not accepted in nicks

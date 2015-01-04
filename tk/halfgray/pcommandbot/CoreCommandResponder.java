@@ -22,7 +22,7 @@ import java.util.Locale;
  * </p>
  */
 public class CoreCommandResponder implements Responder {
-	public static final String ABOUT_STRING = "This bot is running PCommandBot, version 1.0."
+	public static final String ABOUT_STRING = "This bot is running PCommandBot, version 1.0.2."
 		+ " More information is at <http://github.com/jack126guy/pcommandbot>.";
 
 	/**
