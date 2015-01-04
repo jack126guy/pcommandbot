@@ -16,7 +16,7 @@ For other tasks, you will need to use the `PCommandBot` class and load the confi
 
 ## Interaction
 
-A command consists of a command prefix, a command string, whitespace, and a possible argument. By default, the argument is read until the end of the message, but PCommandBot may be configured with an argument terminator that signals the end. (This allows for multiple commands in a single message.) All fields except the command string are case-sensitive.
+Commands may be sent either publicly in a channel or privately. A command consists of a command prefix, a command string, whitespace, and a possible argument. By default, the argument is read until the end of the message, but PCommandBot may be configured with an argument terminator that signals the end. (This allows for multiple commands in a single message.) All fields except the command string are case-sensitive.
 
 By default, the command prefix is `!`, so `!help` invokes a command with the string `help`.
 
