@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Jack126Guy. Refer to /LICENSE.txt for details. */
+/* Copyright (c) 2015 Jack126Guy. Refer to /LICENSE.txt for details. */
 package tk.halfgray.pcommandbot;
 
 import java.util.regex.Pattern;

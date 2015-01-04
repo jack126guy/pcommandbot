@@ -1,3 +1,4 @@
+/* Copyright (c) 2015 Jack126Guy. Refer to /LICENSE.txt for details. */
 /**
  * <p>PCommandBot is a bot that responds to commands sent through IRC.</p>
  * <p>A command consists of a command prefix, a command string, whitespace,
