@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Jack126Guy. Refer to /LICENSE.txt for details. */
+/* Copyright (c) 2015 Jack126Guy. Refer to /LICENSE.txt for details. */
 package tk.halfgray.pcommandbot;
 
 import org.jibble.pircbot.*;
@@ -40,7 +40,7 @@ public class PCommandBot extends PircBot {
 	/**
 	 * Version string
 	 */
-	public static final String PCB_VERSION_STRING = "PCommandBot v1.0.2 http://github.com/jack126guy/pcommandbot";
+	public static final String PCB_VERSION_STRING = "PCommandBot v1.0.3 http://github.com/jack126guy/pcommandbot";
 
 	/**
 	 * Pattern that matches one or more characters not accepted in nicks
@@ -595,6 +595,7 @@ public class PCommandBot extends PircBot {
 	 * @param channel Channel for which the list applies
 	 * @param users Users in the channel
 	 * @see PircBot#onUserList(String, User[])
+	 * @see #getUserLists()
 	 */
 	@Override
 	protected void onUserList(String channel, User[] users) {
@@ -610,6 +611,16 @@ public class PCommandBot extends PircBot {
 		}
 	}
 
+	/**
+	 * Process someone joining a channel. This method is overridden to
+	 * place the nick into a list of users for tracking.
+	 * @param channel Channel that was joined
+	 * @param sender User who joined
+	 * @param login Login name of the user
+	 * @param hostname Hostname of the user
+	 * @see PircBot#onJoin(String, String, String, String)
+	 * @see #getUserLists()
+	 */
 	@Override
 	protected void onJoin(String channel, String sender, String login, String hostname) {
 		channel = channel.toLowerCase(Locale.ENGLISH);
@@ -620,6 +631,16 @@ public class PCommandBot extends PircBot {
 		}
 	}
 
+	/**
+	 * Process someone parting a channel. This method is overridden to
+	 * remove the nick from a list of users for tracking.
+	 * @param channel Channel that was parted
+	 * @param sender User who parted
+	 * @param login Login name of the user
+	 * @param hostname Hostname of the user
+	 * @see PircBot#onPart(String, String, String, String)
+	 * @see #getUserLists()
+	 */
 	@Override
 	protected void onPart(String channel, String sender, String login, String hostname) {
 		channel = channel.toLowerCase(Locale.ENGLISH);
@@ -633,6 +654,18 @@ public class PCommandBot extends PircBot {
 		}
 	}
 
+	/**
+	 * Process someone being kicked from a channel. This method is
+	 * overridden to remove the nick from a list of users for tracking.
+	 * @param channel Channel from which the user was kicked
+	 * @param kickerNick User (operator/half-operator) who kicked
+	 * @param kickerLogin Login name of the kicker
+	 * @param kickerHostname Hostname of the kicker
+	 * @param recipientNick User who was kicked
+	 * @param reason Reason given for kicking
+	 * @see PircBot#onKick(String, String, String, String, String, String)
+	 * @see #getUserLists()
+	 */
 	@Override
 	protected void onKick(String channel, String kickerNick, String kickerLogin, String kickerHostname, String recipientNick, String reason) {
 		channel = channel.toLowerCase(Locale.ENGLISH);

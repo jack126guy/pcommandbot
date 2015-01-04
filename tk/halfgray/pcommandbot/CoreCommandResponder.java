@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Jack126Guy. Refer to /LICENSE.txt for details. */
+/* Copyright (c) 2015 Jack126Guy. Refer to /LICENSE.txt for details. */
 package tk.halfgray.pcommandbot;
 
 import java.util.Locale;
@@ -22,7 +22,10 @@ import java.util.Locale;
  * </p>
  */
 public class CoreCommandResponder implements Responder {
-	public static final String ABOUT_STRING = "This bot is running PCommandBot, version 1.0.2."
+	/**
+	 * Message used to reply to the "about" subcommand
+	 */
+	public static final String ABOUT_STRING = "This bot is running PCommandBot, version 1.0.3."
 		+ " More information is at <http://github.com/jack126guy/pcommandbot>.";
 
 	/**
