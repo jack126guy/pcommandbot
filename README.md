@@ -20,6 +20,21 @@ A command consists of a command prefix, a command string, whitespace, and a poss
 
 By default, the command prefix is `!`, so `!help` invokes a command with the string `help`.
 
+### Administration
+
+A special command called the core command is used to access core functionality of the bot. By default the core command is `p`.
+
+The first part of the argument (before whitespace) is the subcommand, which determines the action to be taken. The remainder of the argument is the subargument, which is passed to the subcommand.
+
+Currently, the recognized subcommands are:
+
+* *auth*: Authenticate with the bot to perform sensitive actions. The subargument is the configured password.
+* *quit*: Quit the application. (This calls `System.exit()`, so this is not recommended for multi-bot applications.) Requires authentication.
+* *join*: Join a channel. The subargument is the channel to join. Requires authentication.
+* *part*: Part a channel. The subargument is the channel to part. Requires authentication.
+* *time*: Get the time in UTC.
+* *echo*: Reply with the subargument.
+
 ## Building From Source
 
 The `sources.txt` and `manifest.txt` files are provided in the source distribution to enable building with just the JDK:
