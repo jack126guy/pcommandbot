@@ -1,0 +1,21 @@
+{
+	"server": "irc.example.org",
+	"port": 6667,
+	"nicks": ["PCommandBot", "PCommandBot_", "PCommandBot__"],
+	"username": "JackBot",
+	"nickserv_password": "",
+	"channels": ["#example"],
+	"command_prefix": "!",
+	"argument_terminator": "",
+	"core_command": "p",
+	"admin_password": "changethis",
+	"commands": {
+		"help": "Hello, I'm a bot! My operator should really update this help text with a URL to a list of commands or something.",
+		"h": ["help"],
+		"ping": "pong",
+		"foo": "bar",
+		"baz": "qux",
+	},
+	"default_private": "Hello, I'm a bot. Unless you have a command for me, this is my only response. My operator should update this with a URL to more information.",
+	"mentioned_response": "Did someone say something?",
+}

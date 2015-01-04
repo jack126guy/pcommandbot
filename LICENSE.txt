@@ -1,0 +1,18 @@
+PCommandBot
+Copyright (c) 2015 Jack126Guy
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+LEGAL/license-GPL3.txt contains a copy of the GNU GPL.
+
+Different components of PCommandBot are available under different licenses.
+
+Source files in the org.halfgray.pcommandbot package (including subpackages) are available under the MIT License; LEGAL/license-MIT.txt contains a copy.
+
+Source files in the org.jibble.pircbot package (including subpackages) are available under the GNU General Public license; LEGAL/license-GPL3.txt contains a copy of version 3 of the license. The source files were not modified, but the binary files were modified by different building and packaging processes. Although version 2 of the license is provided at <http://www.jibble.org/licenses/> (the URL referenced in the source files), the specific version that applies is not specified, so it is believed that section 9 of the GPLv2 allows one to use any version published by the Free Software Foundation.
+
+Source files in the org.json.simple package (including subpackages) are available under the Apache License, Version 2.0; LEGAL/license-Apache2_0.txt contains a copy. The source files were not modified, but the binary files were modified by different building and packaging processes. LEGAL/authors-JSON-Simple.txt contains the list of authors provided in the original distribution.
