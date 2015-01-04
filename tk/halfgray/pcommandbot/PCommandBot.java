@@ -40,7 +40,7 @@ public class PCommandBot extends PircBot {
 	/**
 	 * Version string
 	 */
-	public static final String PCB_VERSION_STRING = "PCommandBot v1.0 http://github.com/jack126guy/pcommandbot";
+	public static final String PCB_VERSION_STRING = "PCommandBot v1.0.2 http://github.com/jack126guy/pcommandbot";
 
 	/**
 	 * Pattern that matches one or more characters not accepted in nicks
@@ -221,7 +221,7 @@ public class PCommandBot extends PircBot {
 				throw new IllegalArgumentException("Invalid channel item encountered", e);
 			}
 			for(int i = 0; i < channels.length; i++) {
-				channels[i] = Utilities.supertrim(nicks[i]);
+				channels[i] = Utilities.supertrim(channels[i]);
 			}
 		} else {
 			channels = new String[0];
@@ -612,7 +612,6 @@ public class PCommandBot extends PircBot {
 
 	@Override
 	protected void onJoin(String channel, String sender, String login, String hostname) {
-		System.out.println("onJoin(): "+sender);
 		channel = channel.toLowerCase(Locale.ENGLISH);
 		sender = sender.toLowerCase(Locale.ENGLISH);
 		//It is redundant to add the bot when it joins
@@ -625,7 +624,6 @@ public class PCommandBot extends PircBot {
 	protected void onPart(String channel, String sender, String login, String hostname) {
 		channel = channel.toLowerCase(Locale.ENGLISH);
 		sender = sender.toLowerCase(Locale.ENGLISH);
-		System.out.println("onPart(): "+sender);
 		if(sender.equals(getNick().toLowerCase(Locale.ENGLISH))) {
 			//Bot parted: Remove user list to save memory
 			getUserLists().remove(channel);
