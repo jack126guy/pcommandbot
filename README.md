@@ -37,6 +37,8 @@ Currently, the recognized subcommands are:
 
 ## Building From Source
 
+Source code is available at <http://github.com/jack126guy/pcommandbot>.
+
 The `sources.txt` and `manifest.txt` files are provided in the source distribution to enable building with just the JDK:
 
 	cd [source dir]
