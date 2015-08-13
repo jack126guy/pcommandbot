@@ -160,9 +160,9 @@ public class PCommandBot extends PircBot {
 		} catch(Exception e) {
 			resetConfiguration();
 			if(e instanceof java.io.IOException) {
-				throw (java.io.IOException) e;
+				throw new java.io.IOException("Could not read configuration", e);
 			} else if(e instanceof IllegalArgumentException) {
-				throw (IllegalArgumentException) e;
+				throw new IllegalArgumentException("Malformed configuration", e);
 			}
 		}
 
