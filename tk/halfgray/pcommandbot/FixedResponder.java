@@ -2,7 +2,7 @@
 package tk.halfgray.pcommandbot;
 
 /**
- * {@link Responder} that responds with a fixed message.
+ * Responder that responds with a fixed message.
  * Circumstances of the original message are ignored.
  */
 public class FixedResponder implements Responder {
