@@ -7,7 +7,7 @@ import org.json.simple.parser.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.HashMap;
+import tk.halfgray.pcommandbot.NormalizedKeyMap;
 import java.util.Locale;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
@@ -125,9 +125,9 @@ public class PCommandBot extends PircBot {
 	 */
 	public PCommandBot() {
 		super();
-		responders = new HashMap<String, Responder>();
-		syncommands = new HashMap<String, String[]>();
-		userlists = new HashMap<String, java.util.Set<String>>();
+		responders = new NormalizedKeyMap<String, Responder>(Utilities.LOWERCASE);
+		syncommands = new NormalizedKeyMap<String, String[]>(Utilities.LOWERCASE);
+		userlists = new NormalizedKeyMap<String, java.util.Set<String>>(Utilities.LOWERCASE);
 		setVersion(PCB_VERSION_STRING);
 		config = null;
 		server = "";
@@ -273,8 +273,7 @@ public class PCommandBot extends PircBot {
 		getSynonymousCommands().remove(corecommand);
 		Object adminpass = config.get("admin_password");
 		if((adminpass instanceof String) && !((String) adminpass).isEmpty()) {
-			getResponders().put(corecommand.toLowerCase(Locale.ENGLISH),
-			new CoreCommandResponder((String) adminpass, this));
+			getResponders().put(corecommand, new CoreCommandResponder((String) adminpass, this));
 		} else {
 			throw new IllegalArgumentException("Could not find admin password");
 		}
@@ -330,8 +329,7 @@ public class PCommandBot extends PircBot {
 			if(!((fckey instanceof String) && (fcmap.get(fckey) instanceof String))) {
 				continue;
 			}
-			this.getResponders().put(((String) fckey).toLowerCase(Locale.ENGLISH),
-				new FixedResponder((String) fcmap.get(fckey)));
+			this.getResponders().put((String) fckey, new FixedResponder((String) fcmap.get(fckey)));
 		}
 	}
 
@@ -371,8 +369,7 @@ public class PCommandBot extends PircBot {
 					synonyms.add((String) synonym);
 				}
 			}
-			getSynonymousCommands().put(((String) fckey).toLowerCase(Locale.ENGLISH),
-				synonyms.toArray(new String[0]));
+			getSynonymousCommands().put((String) fckey, synonyms.toArray(new String[0]));
 		}
 	}
 
@@ -599,7 +596,6 @@ public class PCommandBot extends PircBot {
 	 */
 	@Override
 	protected void onUserList(String channel, User[] users) {
-		channel = channel.toLowerCase(Locale.ENGLISH);
 		if(!getUserLists().containsKey(channel)) {
 			getUserLists().put(channel, new java.util.HashSet<String>());
 		}
@@ -623,7 +619,6 @@ public class PCommandBot extends PircBot {
 	 */
 	@Override
 	protected void onJoin(String channel, String sender, String login, String hostname) {
-		channel = channel.toLowerCase(Locale.ENGLISH);
 		sender = sender.toLowerCase(Locale.ENGLISH);
 		//It is redundant to add the bot when it joins
 		if(!sender.equals(getNick().toLowerCase(Locale.ENGLISH))) {
@@ -643,7 +638,6 @@ public class PCommandBot extends PircBot {
 	 */
 	@Override
 	protected void onPart(String channel, String sender, String login, String hostname) {
-		channel = channel.toLowerCase(Locale.ENGLISH);
 		sender = sender.toLowerCase(Locale.ENGLISH);
 		if(sender.equals(getNick().toLowerCase(Locale.ENGLISH))) {
 			//Bot parted: Remove user list to save memory
@@ -668,7 +662,6 @@ public class PCommandBot extends PircBot {
 	 */
 	@Override
 	protected void onKick(String channel, String kickerNick, String kickerLogin, String kickerHostname, String recipientNick, String reason) {
-		channel = channel.toLowerCase(Locale.ENGLISH);
 		recipientNick = recipientNick.toLowerCase(Locale.ENGLISH);
 		if(recipientNick.equals(getNick().toLowerCase(Locale.ENGLISH))) {
 			//Bot was kicked: Remove user list to save memory
@@ -689,7 +682,7 @@ public class PCommandBot extends PircBot {
 		String[] nicktokens = NON_NICK_CHARACTERS.split(message);
 		int filtercount = 0;
 		for(int i = 0; i < nicktokens.length; i++) {
-			if(!getUserLists().get(channel.toLowerCase(Locale.ENGLISH)).contains(nicktokens[i].toLowerCase(Locale.ENGLISH))) {
+			if(!getUserLists().get(channel).contains(nicktokens[i].toLowerCase(Locale.ENGLISH))) {
 				nicktokens[i] = "";
 				filtercount++;
 			}
@@ -743,12 +736,12 @@ public class PCommandBot extends PircBot {
 			mentions = new String[0];
 		}
 		List<String> responses = new java.util.ArrayList<String>();
-		String lccmdstr;
+		String command;
 		String argument;
 		String[] synonyms;
 		String response;
 		while(matcher.find()) {
-			lccmdstr = matcher.group(1).toLowerCase(Locale.ENGLISH);
+			command = matcher.group(1);
 			argument = matcher.group(3);
 			//If there is nothing after the command string,
 			//groups 2 and 3 will be null
@@ -758,8 +751,8 @@ public class PCommandBot extends PircBot {
 				argument = Utilities.supertrim(argument);
 			}
 			//Check synonymous command
-			if(getSynonymousCommands().containsKey(lccmdstr)) {
-				synonyms = getSynonymousCommands().get(lccmdstr);
+			if(getSynonymousCommands().containsKey(command)) {
+				synonyms = getSynonymousCommands().get(command);
 				for(String synonym : synonyms) {
 					if(getResponders().containsKey(synonym)) {
 						response = getResponders().get(synonym).respond(channel, sender, mentions, argument);
@@ -772,8 +765,8 @@ public class PCommandBot extends PircBot {
 				continue;
 			}
 			//Check regular responder
-			if(getResponders().containsKey(lccmdstr)) {
-				response = getResponders().get(lccmdstr).respond(channel, sender, mentions, argument);
+			if(getResponders().containsKey(command)) {
+				response = getResponders().get(command).respond(channel, sender, mentions, argument);
 				if(!response.isEmpty()) {
 					responses.add(Utilities.toMentionPrefix(mentions)+response);
 				}

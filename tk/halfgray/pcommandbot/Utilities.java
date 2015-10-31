@@ -2,6 +2,7 @@
 package tk.halfgray.pcommandbot;
 
 import java.util.regex.Pattern;
+import java.util.Locale;
 
 /**
  * General utilities
@@ -13,6 +14,24 @@ public class Utilities {
 	 * {@link Character#isSpaceChar(int)} or {@link Character#isISOControl(int)}.
 	 */
 	public static final Pattern WHITESPACE = Pattern.compile("[\\p{javaSpaceChar}\\p{javaISOControl}]+");
+
+	/**
+	 * Normalizer that converts keys to lowercase strings.
+	 * The conversion to lowercase is done with
+	 * {@code toLowerCase(java.util.Locale.ENGLISH)}.
+	 * If the given key is {@code null}, the normalized
+	 * key is {@code null}.
+	 */
+	public static final NormalizedKeyMap.Normalizer<String> LOWERCASE = new NormalizedKeyMap.Normalizer<String>() {
+		@Override
+		public String normalize(Object key) {
+			if(key == null) {
+				return null;
+			} else {
+				return key.toString().toLowerCase(Locale.ENGLISH);
+			}
+		}
+	};
 
 	/**
 	 * "Supertrim" a string. That is, remove all characters at the beginning

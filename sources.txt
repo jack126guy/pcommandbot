@@ -26,6 +26,7 @@
 ./tk/halfgray/pcommandbot/CoreCommandResponder.java
 ./tk/halfgray/pcommandbot/FixedResponder.java
 ./tk/halfgray/pcommandbot/Main.java
+./tk/halfgray/pcommandbot/NormalizedKeyMap.java
 ./tk/halfgray/pcommandbot/package-info.java
 ./tk/halfgray/pcommandbot/PCommandBot.java
 ./tk/halfgray/pcommandbot/Responder.java
