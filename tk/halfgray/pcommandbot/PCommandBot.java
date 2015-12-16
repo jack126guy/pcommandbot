@@ -321,12 +321,14 @@ public class PCommandBot extends PircBot {
 			return;
 		}
 		Map fcmap = (Map) fixedcommands;
+		Object fcvalue;
 		for(Object fckey : fcmap.keySet()) {
+			fcvalue = fcmap.get(fckey);
 			//Ensure that the key and value are strings
-			if(!((fckey instanceof String) && (fcmap.get(fckey) instanceof String))) {
+			if(!((fckey instanceof String) && (fcvalue instanceof String))) {
 				continue;
 			}
-			this.getResponders().put((String) fckey, new FixedResponder((String) fcmap.get(fckey)));
+			this.getResponders().put((String) fckey, new FixedResponder((String) fcvalue));
 		}
 	}
 
