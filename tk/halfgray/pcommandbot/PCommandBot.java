@@ -321,10 +321,7 @@ public class PCommandBot extends PircBot {
 			return;
 		}
 		Map fcmap = (Map) fixedcommands;
-		Iterator fciter = fcmap.keySet().iterator();
-		Object fckey;
-		while(fciter.hasNext()) {
-			fckey = fciter.next();
+		for(Object fckey : fcmap.keySet()) {
 			//Ensure that the key and value are strings
 			if(!((fckey instanceof String) && (fcmap.get(fckey) instanceof String))) {
 				continue;
